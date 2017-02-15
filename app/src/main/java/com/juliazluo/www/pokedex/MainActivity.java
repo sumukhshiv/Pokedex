@@ -3,6 +3,7 @@ package com.juliazluo.www.pokedex;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements MultiSpinner.Mult
                     minDP = Integer.parseInt(dpInput.getText().toString());
 
                 Log.i("Input", minDP + " " + minHP + " " + minAttack);
+                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                startActivity(intent);
             }
         });
 
