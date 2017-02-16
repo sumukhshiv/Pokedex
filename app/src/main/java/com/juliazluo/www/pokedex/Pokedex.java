@@ -5,13 +5,14 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
  * Created by aneeshjindal on 9/21/16.
  */
-public class Pokedex {
+public class Pokedex implements Serializable {
 
     public ArrayList<Pokemon> getPokemon() {
         ArrayList<Pokemon> pokemons = new ArrayList<>();
@@ -32,7 +33,7 @@ public class Pokedex {
         return pokemons;
     }
 
-    public class Pokemon {
+    public class Pokemon implements Serializable {
 
         String name;
         String number;

@@ -59,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements MultiSpinner.Mult
 
                 Log.i("Input", minDP + " " + minHP + " " + minAttack);
                 Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("RANDOMIZE", false);
+                intent.putExtra("CHOSEN_TYPES", chosenTypes);
+                intent.putExtra("MIN_ATTACK", minAttack);
+                intent.putExtra("MIN_DP", minDP);
+                intent.putExtra("MIN_HP", minHP);
                 startActivity(intent);
             }
         });
@@ -66,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements MultiSpinner.Mult
         ((ImageButton) findViewById(R.id.random_btn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("RANDOMIZE", true);
+                startActivity(intent);
             }
         });
     }

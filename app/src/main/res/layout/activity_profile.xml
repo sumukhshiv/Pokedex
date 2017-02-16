@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.juliazluo.www.pokedex.ProfileActivity">
+
+    <ImageView
+        android:layout_width="274dp"
+        android:layout_height="290dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/profile_image"
+        android:layout_marginTop="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintHorizontal_bias="0.25" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_name"
+        app:layout_constraintBottom_toTopOf="@+id/profile_image"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="32dp"
+        android:textSize="32sp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_number"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_hp"
+        android:gravity="left"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/profile_image"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_dp"
+        android:gravity="left"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/profile_image"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/profile_hp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_types"
+        app:layout_constraintTop_toBottomOf="@+id/profile_species"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_species"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/profile_dp"
+        app:layout_constraintHorizontal_bias="0.36"
+        android:id="@+id/profile_attack"
+        android:gravity="left"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/profile_image"
+        android:layout_marginLeft="8dp"
+        android:textSize="16sp" />
+</android.support.constraint.ConstraintLayout>
