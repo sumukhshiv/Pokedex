@@ -53,6 +53,7 @@ public class FilteredListAdapter extends RecyclerView.Adapter<FilteredListAdapte
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("POKEMON", pokemon);
                 intent.putExtras(bundle);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });

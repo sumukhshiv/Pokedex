@@ -42,7 +42,14 @@ public class ProfileActivity extends AppCompatActivity {
         dp.setText("DP: " + pokemon.defense);
         attack.setText("AP: " + pokemon.attack);
         species.setText("Species: " + pokemon.species);
-        types.setText("Types: ");
+        String typeNames = "Types: ";
+        for (int i = 0; i < pokemon.types.length; i++) {
+            typeNames += pokemon.types[i];
+            if (i != pokemon.types.length - 1) {
+                typeNames += ", ";
+            }
+        }
+        types.setText(typeNames);
         Glide.with(this)
                 .load("http://assets.pokemon.com/assets/cms2/img/pokedex/full/" + pokemon.number + ".png")
                 .into(image);

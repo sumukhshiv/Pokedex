@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,13 +24,24 @@ public class MainActivity extends AppCompatActivity implements MultiSpinner.Mult
     protected boolean[] chosenTypes;
     protected EditText attackInput, hpInput, dpInput;
 
+    AutoCompleteTextView mAutoCompleteTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         pokemonHandler = new PokemonHandler();
         ArrayList<String> pokemonTypes = pokemonHandler.getPokemonTypes();
         chosenTypes = new boolean[pokemonTypes.size()];
+
+        ArrayList<Pokedex.Pokemon> pokemonList = pokemonHandler.getPokemonList();
+
+        mAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewForSearch);
+        SearchSuggestionsAdapter searchSuggestionsAdapter = new SearchSuggestionsAdapter(getApplicationContext(),
+                R.layout.search_list_item, pokemonList);
+        mAutoCompleteTextView.setAdapter(searchSuggestionsAdapter);
+        mAutoCompleteTextView.setThreshold(1);
 
         // all types start out as selected
         for (boolean b : chosenTypes) {
@@ -91,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements MultiSpinner.Mult
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         searchView.setQueryHint("Search for a pokemon...");
+
 
         return true;
     }

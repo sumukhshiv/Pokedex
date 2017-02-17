@@ -3,6 +3,7 @@ package com.juliazluo.www.pokedex;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by julia on 2017-02-14.
@@ -23,8 +24,11 @@ public class PokemonHandler {
     public ArrayList<String> populateTypes() {
         ArrayList<String> types = new ArrayList<>();
         for (Pokedex.Pokemon pokemon : pokemonList) {
-            if (!types.contains(pokemon.species)) {
-                types.add(pokemon.species);
+            for (int i = 0; i < pokemon.types.length; i++) {
+                if (!types.contains(pokemon.types[i])) {
+                    types.add(pokemon.types[i]);
+                }
+
             }
         }
         return types;
@@ -32,10 +36,23 @@ public class PokemonHandler {
 
     public ArrayList<Pokedex.Pokemon> filter(boolean[] types, int minAttack, int minDP, int minHP) {
         ArrayList<Pokedex.Pokemon> filtered = new ArrayList<>();
+
+        HashSet<String> typeNames = new HashSet<>();
+        for (int i = 0; i < types.length; i++) {
+            if (types[i]) {
+                typeNames.add(pokemonTypes.get(i));
+            }
+        }
+
         for (Pokedex.Pokemon pokemon : pokemonList) {
             if (Integer.parseInt(pokemon.attack) >= minAttack && Integer.parseInt(pokemon.defense) >= minDP
                     && Integer.parseInt(pokemon.hp) >= minHP) {
-                filtered.add(pokemon);
+                for (int i = 0; i < pokemon.types.length; i++) {
+                    if (typeNames.contains(pokemon.types[i])) {
+                        filtered.add(pokemon);
+                        break;
+                    }
+                }
             }
         }
         return filtered;

@@ -2,6 +2,7 @@ package com.juliazluo.www.pokedex;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,6 +42,7 @@ public class Pokedex implements Serializable {
         String defense;
         String hp;
         String species;
+        String[] types;
 
         public Pokemon(String name, JSONObject jsonData) {
             try {
@@ -50,6 +52,11 @@ public class Pokedex implements Serializable {
                 defense = jsonData.getString("Defense").trim();
                 hp = jsonData.getString("HP").trim();
                 species = jsonData.getString("Species").trim();
+                JSONArray jsonTypes = jsonData.getJSONArray("Type");
+                types = new String[jsonTypes.length()];
+                for (int i = 0; i < jsonTypes.length(); i++) {
+                    types[i] = jsonTypes.getString(i).trim();
+                }
 
             } catch (JSONException e) {
                 Log.i("JSON error", "error parsing json data");
