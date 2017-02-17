@@ -1,9 +1,12 @@
 package com.juliazluo.www.pokedex;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Pokedex.Pokemon pokemon;
     private TextView name, number, hp, dp, attack, species, types;
     private ImageView image;
+    private Button buttonSearchTheWeb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,8 @@ public class ProfileActivity extends AppCompatActivity {
         species = (TextView) findViewById(R.id.profile_species);
         types = (TextView) findViewById(R.id.profile_types);
         image = (ImageView) findViewById(R.id.profile_image);
+        buttonSearchTheWeb = (Button) findViewById(R.id.buttonSearchTheWeb);
+
         Log.i("started", "this activity");
     }
 
@@ -53,5 +59,15 @@ public class ProfileActivity extends AppCompatActivity {
         Glide.with(this)
                 .load("http://assets.pokemon.com/assets/cms2/img/pokedex/full/" + pokemon.number + ".png")
                 .into(image);
+
+        buttonSearchTheWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String q = pokemon.name;
+                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH );
+                intent.putExtra(SearchManager.QUERY, q);
+                startActivity(intent);
+            }
+        });
     }
 }
