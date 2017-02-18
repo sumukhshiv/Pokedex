@@ -3,6 +3,7 @@ package com.juliazluo.www.pokedex;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class FilteredListAdapter extends RecyclerView.Adapter<FilteredListAdapter.CustomViewHolder> {
     private Context context;
     private ArrayList<Pokedex.Pokemon> pokemonList;
+    private boolean isLinear = true;
 
     public FilteredListAdapter(Context context, ArrayList<Pokedex.Pokemon> pokemonList) {
         this.context = context;
@@ -34,6 +36,10 @@ public class FilteredListAdapter extends RecyclerView.Adapter<FilteredListAdapte
         return new CustomViewHolder(view);
     }
 
+    public void setIsLinear(boolean b) {
+        isLinear = b;
+    }
+
     @Override
     public void onBindViewHolder(FilteredListAdapter.CustomViewHolder holder, int position) {
         final Pokedex.Pokemon pokemon = pokemonList.get(position);
@@ -41,12 +47,12 @@ public class FilteredListAdapter extends RecyclerView.Adapter<FilteredListAdapte
         //to what you did to the layout manager.
         //can change properties based on position (alternate colors, etc)
         holder.nameText.setText(pokemon.name);
-        holder.hpText.setText("HP: " + pokemon.hp);
+        holder.numText.setText(pokemon.number); //Switched from hp to number
         Glide.with(context)
                 .load("http://assets.pokemon.com/assets/cms2/img/pokedex/full/" + pokemon.number + ".png")
                 .into(holder.imageView);
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
+        holder.cardViewListHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProfileActivity.class);
@@ -72,14 +78,19 @@ public class FilteredListAdapter extends RecyclerView.Adapter<FilteredListAdapte
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nameText, hpText;
+        TextView nameText, numText;
         ImageView imageView;
+        CardView cardViewListHolder;
 
         public CustomViewHolder(View view) {
             super(view);
+
+
             nameText = (TextView) view.findViewById(R.id.filter_list_name); //need view. because not in an activity
             imageView = (ImageView) view.findViewById(R.id.filter_list_image);
-            hpText = (TextView) view.findViewById(R.id.filter_list_hp);
+            numText = (TextView) view.findViewById(R.id.filter_list_hp);
+            cardViewListHolder = (CardView) view.findViewById(R.id.filterListCardView);
+            
         }
     }
 }

@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements MultiSpinner.Mult
         mAutoCompleteTextView.setThreshold(1);
 
         // all types start out as selected
-        for (boolean b : chosenTypes) {
-            b = true;
+        for (int i = 0; i < chosenTypes.length; i++) {
+            chosenTypes[i] = true;
         }
 
         MultiSpinner multiSpinner = (MultiSpinner) findViewById(R.id.type_spinner);
