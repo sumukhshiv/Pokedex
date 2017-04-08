@@ -3,6 +3,7 @@ package com.juliazluo.www.pokedex;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 
 /**
@@ -18,20 +19,9 @@ public class PokemonHandler {
     public PokemonHandler() {
         pokedex = new Pokedex();
         pokemonList = pokedex.getPokemon();
-        pokemonTypes = populateTypes();
-    }
+        String[] typeArray = {"Clear Filter", "Normal", "Fire", "Water", "Fighting", "Flying", "Grass", "Poison", "Electric", "Ground", "Psychic", "Rock", "Ice", "Bug", "Dragon", "Ghost", "Dark", "Steel", "Fairy"};
+        pokemonTypes = new ArrayList<String>(Arrays.asList(typeArray));
 
-    public ArrayList<String> populateTypes() {
-        ArrayList<String> types = new ArrayList<>();
-        for (Pokedex.Pokemon pokemon : pokemonList) {
-            for (int i = 0; i < pokemon.types.length; i++) {
-                if (!types.contains(pokemon.types[i])) {
-                    types.add(pokemon.types[i]);
-                }
-
-            }
-        }
-        return types;
     }
 
     public ArrayList<Pokedex.Pokemon> filter(boolean[] types, int minAttack, int minDP, int minHP) {

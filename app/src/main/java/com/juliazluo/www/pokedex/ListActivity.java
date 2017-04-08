@@ -54,11 +54,7 @@ public class ListActivity extends AppCompatActivity {
 
             }
         });
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
         Intent intent = getIntent();
         boolean randomize = intent.getBooleanExtra("RANDOMIZE", true);
 
@@ -72,7 +68,26 @@ public class ListActivity extends AppCompatActivity {
             pokemonList = pokemonHandler.filter(chosenTypes, minAttack, minDP, minHP);
         }
 
-        Log.i("New list size", pokemonList.size() + "");
         adapter.setFilter(pokemonList);
     }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Intent intent = getIntent();
+//        boolean randomize = intent.getBooleanExtra("RANDOMIZE", true);
+//
+//        if (randomize) {
+//            pokemonList = pokemonHandler.generateRandom();
+//        } else {
+//            boolean[] chosenTypes = intent.getBooleanArrayExtra("CHOSEN_TYPES");
+//            int minAttack = intent.getIntExtra("MIN_ATTACK", 0);
+//            int minDP = intent.getIntExtra("MIN_DP", 0);
+//            int minHP = intent.getIntExtra("MIN_HP", 0);
+//            pokemonList = pokemonHandler.filter(chosenTypes, minAttack, minDP, minHP);
+//        }
+//
+//        Log.i("New list size", pokemonList.size() + "");
+//        adapter.setFilter(pokemonList);
+//    }
 }

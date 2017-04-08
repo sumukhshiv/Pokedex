@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements MultiSpinner.Mult
             }
         });
 
-        ((ImageButton) findViewById(R.id.random_btn)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.random_btn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ListActivity.class);
